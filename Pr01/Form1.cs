@@ -16,5 +16,30 @@ namespace Pr01
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string text = (textBox1.Text);
+            text = text.ToLower();
+            string samohlasky = "aeiouyáéěíóúůý"; 
+            string souhlasky = "bcčdďfghjklmnpqrřsštťvwxzž";
+
+            int pocet_samohlasek = 0;
+            int pocet_souhlasek = 0;
+
+            foreach(char pismenko in text)
+            {
+                if (samohlasky.Contains(pismenko))
+                {
+                    pocet_samohlasek++;
+                }
+                else if (souhlasky.Contains(pismenko))
+                {
+                    pocet_souhlasek++;
+                }
+            }
+            int delka = (textBox1.Text.Length) - (pocet_samohlasek + pocet_souhlasek);
+            label1.Text = ("Počet samohlásek " + pocet_samohlasek + " , počet souhlásek " + pocet_souhlasek + " , počet mezer " + delka);
+        }
     }
 }
