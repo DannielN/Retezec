@@ -20,9 +20,9 @@ namespace Pr02
         private void button1_Click(object sender, EventArgs e)
         {
             /* button šifrování  */
-            string text = (textBox1.Text);
-            int velikost = Convert.ToInt32(textBox2.Text);
-            string sifra = string.Empty;
+            string text = (textBox1.Text); /* text ktery budeme šifrovat */
+            int velikost = Convert.ToInt32(textBox2.Text); /* velikost posunu */ 
+            string sifra = string.Empty; 
             int hodnota = 0;
 
             foreach(char pismenko in text)
@@ -32,10 +32,10 @@ namespace Pr02
                 {
                     hodnota = ascii + velikost; /* ascii 120 = x, posun = 5 hodnota = 120+5, if (hodnota > 122),  hodnota = 125
                                                  pomocna 125 - 122 = 3 hodnota = 97+pomocna */
-                    if (hodnota >= 90)
+                    if (hodnota > 90)
                     {
                         int help = hodnota - 90;
-                        hodnota = 65 + help;
+                        hodnota = 64 + help;
                     }
                     sifra += (char)hodnota;
                     textBox3.Text = ("" + sifra);
@@ -53,8 +53,29 @@ namespace Pr02
                     textBox3.Text = ("" + sifra);
                 }
             }
+        }
 
-            label3.Text = ("Ascii hodnota " + hodnota);
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int posun = Convert.ToInt32(textBox2.Text); /* velikost posunu */
+            string text = (textBox3.Text); /* zasifrovany text */
+            int hodnota = 0;
+            string sifra = string.Empty;
+
+            foreach (char pismenko in text)
+            {
+                int ascii_sifra = (int)pismenko; /* ascii_cifra nahrazuje pismenko A = 65*/
+                if (ascii_sifra >= 65 && ascii_sifra <= 90) 
+                {
+                    if (ascii_sifra >= 90)
+                    {
+                        hodnota = ascii_sifra - posun;
+                    }
+                    
+                }
+                sifra += (char)hodnota;
+                textBox3.Text = ("" + sifra);
+            }
         }
     }
 }
