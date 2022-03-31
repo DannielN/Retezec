@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Pr04
+namespace Pr05
 {
     public partial class Form1 : Form
     {
@@ -20,26 +20,16 @@ namespace Pr04
         private void button1_Click(object sender, EventArgs e)
         {
             string text = (textBox1.Text);
-            int poziceV = 0;
+            int pocet_mezer = 0;
+
             foreach(char znaky in text)
             {
-                if (znaky >= 65 && znaky <= 95){
-                    text = text.Remove(poziceV,1);
-                }
-                else            
+                if (znaky == ' ')
                 {
-                    poziceV++;
+                    pocet_mezer++;
                 }
             }
-            textBox2.Text = (text);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            string text = (textBox1.Text);
-
-            text = text.Replace("*", "");
-            textBox2.Text = (text);
+            label1.Text = ("Počet mezer v textu " + pocet_mezer);
         }
     }
 }
